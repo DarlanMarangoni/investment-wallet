@@ -1,0 +1,25 @@
+POST http://localhost:8081/api/incomes/1/receives
+Content-Type: application/json
+
+{
+  "projected": 5000,
+  "actual": 5100.0,
+  "date": "2024-05-15"
+}
+
+###
+### Listando as rendas cadastradas
+GET http://localhost:8081/api/incomes?userId=8ca161e7-a3d6-4275-9193-32a7adfdb9a6
+Accept: application/json
+
+### Criando uma renda
+POST http://localhost:8081/api/incomes
+Content-Type: application/json
+
+{
+  "name": "Salário",
+  "incomeType": "ACTIVE_INCOME",
+  "userId": "8ca161e7-a3d6-4275-9193-32a7adfdb9a6"
+}
+
+###
