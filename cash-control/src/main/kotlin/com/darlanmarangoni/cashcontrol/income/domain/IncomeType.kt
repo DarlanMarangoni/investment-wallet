@@ -1,6 +1,8 @@
 package com.darlanmarangoni.cashcontrol.income.domain
 
-enum class IncomeType {
-    ACTIVE_INCOME,
-    PASSIVE_INCOME
+import org.yaml.snakeyaml.TypeDescription
+
+enum class IncomeType(description: String) {
+    ACTIVE_INCOME("Renda ativa"),
+    PASSIVE_INCOME("Renda passiva")
 }
