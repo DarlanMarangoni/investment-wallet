@@ -1,12 +1,9 @@
-import ButtonUsage from "./components/ButtonUsage";
-
+import NavBar from './components/NavBar';
 
 function App() {
-  return (
-      <div>
-          <ButtonUsage />
-      </div>
-  );
+    return (
+        <NavBar />
+    );
 }
 
 export default App;
