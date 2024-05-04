@@ -4,8 +4,6 @@ import HomePage from "./pages/HomePage";
 import ExpensePage from "./pages/ExpensePage";
 import IncomePage from "./pages/IncomePage";
 import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 
 function App() {
     return (

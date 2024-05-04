@@ -5,6 +5,7 @@ import com.darlanmarangoni.cashcontrol.income.domain.Income
 import com.darlanmarangoni.cashcontrol.income.domain.Receive
 import com.darlanmarangoni.cashcontrol.income.repository.IncomeRepository
 import com.darlanmarangoni.cashcontrol.income.repository.ReceiveRepository
+import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -21,6 +22,7 @@ class IncomeResource(
 ) {
 
     @GetMapping
+    @CrossOrigin("*")
     fun findAllByUserId(@RequestParam(name = "userId", required = true) userId: String): List<Income> {
         return incomeRepository.findAllByUserId(userId)
     }

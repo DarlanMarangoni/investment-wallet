@@ -17,8 +17,8 @@ POST http://localhost:8081/api/incomes
 Content-Type: application/json
 
 {
-  "name": "Salário",
-  "incomeType": "ACTIVE_INCOME",
+  "name": "Dividendo",
+  "incomeType": "PASSIVE_INCOME",
   "userId": "8ca161e7-a3d6-4275-9193-32a7adfdb9a6"
 }
 
