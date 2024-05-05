@@ -51,4 +51,9 @@ Bootstrap Breakpoints (tamanhos de telas relevantes para configurar layouts resp
 Bootstrao Containers 
 Bootstrap Grid system (possui conjunto de estilos prontos para configurar como o sistema vai apresentar o conteudo)
 
+Referências sobre Flexbox
+https://www.w3schools.com/css/css3_flexbox.asp
+https://flexboxfroggy.com/
+https://css-tricks.com/snippets/css/a-guide-to-flexbox
+
 
