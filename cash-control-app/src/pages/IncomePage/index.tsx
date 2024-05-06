@@ -5,6 +5,7 @@ import axios from 'axios';
 import { CASH_CONTROL_API_URL } from '../../services/incomeService';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Receive } from '../../Types/Receive';
+import Table from '../../components/Table';
 
 const IncomePage = () => {
 
@@ -67,6 +68,7 @@ const IncomePage = () => {
         </div>
         <button type="submit" className="btn btn-primary mb-3">Salvar</button>
       </form>
+      <Table />
     </div>
   );
 };
