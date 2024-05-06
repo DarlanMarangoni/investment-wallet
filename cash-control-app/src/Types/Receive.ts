@@ -3,4 +3,5 @@ export interface Receive {
   projected: number;
   actual: number;
   description: string;
+  incomeId: number;
 }

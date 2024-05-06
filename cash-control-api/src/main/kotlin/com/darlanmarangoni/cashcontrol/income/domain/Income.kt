@@ -16,6 +16,8 @@ class Income(
     val userId: String,
     @Column(name = "name", nullable = false)
     val name: String,
+    @Column(name = "description", nullable = false)
+    val description: String,
     @JsonIgnore
     @CreationTimestamp
     val createdDate: LocalDateTime = LocalDateTime.now(),
@@ -30,5 +32,6 @@ class Income(
     var id: Long? = null
 
     @OneToMany(mappedBy = "income")
+    @JsonIgnore
     lateinit var receiveList: List<Receive>
 }

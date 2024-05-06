@@ -5,6 +5,8 @@ import axios from 'axios';
 import { CASH_CONTROL_API_URL } from '../../services/incomeService';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Receive } from '../../Types/Receive';
+import { Simulate } from 'react-dom/test-utils';
+import error = Simulate.error;
 
 const IncomePage = () => {
 
@@ -12,7 +14,11 @@ const IncomePage = () => {
     register,
     handleSubmit
   } = useForm<Receive>()
-  const onSubmit: SubmitHandler<Receive> = (data) => console.log(data)
+  const onSubmit: SubmitHandler<Receive> = (data: Receive) => {
+    axios.post(`${CASH_CONTROL_API_URL}/api/incomes/${data.incomeId}/receives`, data)
+      .then(response => console.log(response))
+      .catch(error => console.error(error));
+  }
 
 
   const [incomes, setIncomes] = useState<Income[]>();
@@ -32,9 +38,9 @@ const IncomePage = () => {
         <div className="row">
           <div className="col-3">
             <label htmlFor="select" className="form-label">Selecione a receita</label>
-            <select className="form-select" aria-label="Default select example">
+            <select className="form-select" aria-label="Default select example" {...register("incomeId")}>
               <option defaultValue="">Selecione...</option>
-              {incomes?.map((value, index) => <option key={index} value={value.name}>{value.name}</option>)}
+              {incomes?.map((value, index) => <option key={value.id} value={value.id}>{value.name}</option>)}
             </select>
           </div>
           <div className="mb-2 col-3">
