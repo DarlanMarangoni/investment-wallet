@@ -1,11 +1,6 @@
 import './style.css';
 import 'bootstrap/js/src/collapse.js';
 
-const pages: string[] = [
-  'HOME',
-  'RENDA',
-  'DESPESA'
-];
 export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-primary main-nav">
