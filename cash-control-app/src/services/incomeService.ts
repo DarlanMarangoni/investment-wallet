@@ -1,0 +1,1 @@
+export const CASH_CONTROL_API_URL = 'http://localhost:8081';
