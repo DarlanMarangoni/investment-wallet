@@ -7,7 +7,7 @@ const Income = () => {
       <form>
         <div className="row">
           <div className="col-3">
-          <label htmlFor="select" className="form-label">Selecione a receita</label>
+            <label htmlFor="select" className="form-label">Selecione a receita</label>
             <select className="form-select" aria-label="Default select example">
               <option selected>Selecione...</option>
               <option value="salario">Salário</option>
@@ -27,7 +27,11 @@ const Income = () => {
             <input type="date" className="form-control" id="inputDate" aria-describedby="data" />
           </div>
         </div>
-        <button type="submit" className="btn btn-primary">Salvar</button>
+        <div className="mb-2">
+          <label htmlFor="textAreaDescription" className="form-label">Descrição</label>
+          <textarea className="form-control" aria-label="With textarea"></textarea>
+        </div>
+        <button type="submit" className="btn btn-primary mb-3">Salvar</button>
       </form>
     </div>
   );
