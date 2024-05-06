@@ -1,5 +1,7 @@
 .main-income {
     background-color: #FFFFFF;
+    padding: 2rem;
     margin-top: 8px;
+    max-width: 900px;
     min-height: calc(100vh - 70px);
 }

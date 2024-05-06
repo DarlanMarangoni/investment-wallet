@@ -5,14 +5,11 @@ import com.darlanmarangoni.cashcontrol.income.domain.Income
 import com.darlanmarangoni.cashcontrol.income.domain.Receive
 import com.darlanmarangoni.cashcontrol.income.repository.IncomeRepository
 import com.darlanmarangoni.cashcontrol.income.repository.ReceiveRepository
-import org.springframework.web.bind.annotation.CrossOrigin
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
+import org.springframework.data.domain.Sort
+import org.springframework.data.web.PageableDefault
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/incomes")
@@ -40,5 +37,18 @@ class IncomeResource(
         }
         receive.income = income.get()
         receiveRepository.save(receive)
+    }
+
+    @GetMapping("/receives")
+    fun findAllReceives(
+        @RequestParam(name = "userId", required = true) userId: String,
+        @PageableDefault(
+            page = 0,
+            size = 10,
+            sort = ["date"],
+            direction = Sort.Direction.DESC
+        ) pageable: Pageable
+    ): Page<Receive> {
+        return receiveRepository.findAll(pageable);
     }
 }

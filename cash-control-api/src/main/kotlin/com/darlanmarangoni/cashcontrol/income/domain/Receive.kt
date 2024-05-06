@@ -17,6 +17,8 @@ class Receive(
     val projected: BigDecimal,
     @Column(name = "actual", nullable = false)
     val actual: BigDecimal,
+    @Column(name = "description", nullable = false)
+    val description: String,
     @JsonIgnore
     @CreationTimestamp
     val createdDate: LocalDateTime = LocalDateTime.now(),

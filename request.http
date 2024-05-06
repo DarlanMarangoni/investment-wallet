@@ -1,10 +1,15 @@
+GET http://localhost:8081/api/incomes/receives
+Accept: application/json
+
+###
 POST http://localhost:8081/api/incomes/1/receives
 Content-Type: application/json
 
 {
   "projected": 5000,
   "actual": 5100.0,
-  "date": "2024-05-15"
+  "date": "2024-05-15",
+  "description": "description"
 }
 
 ###
