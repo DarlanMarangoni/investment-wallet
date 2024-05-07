@@ -1,4 +1,8 @@
 .page-link {
-     color: var(--bs-gray);
-     border: none;
+    color: var(--bs-gray);
+    border: none;
+}
+
+.tb-footer {
+    padding: 0;
 }

@@ -7,6 +7,35 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { Receive } from '../../Types/Receive';
 import Table from '../../components/Table';
 
+
+const headers = [
+  'Tipo',
+  'Nome',
+  'Valor Previsto',
+  'Valor Realizado',
+  'Data',
+  'Ações'
+];
+
+const rows = [
+  [
+    'Renda Ativa',
+    'Dividendo',
+    'R$ 5000,00',
+    '15/05/2025',
+    '15/05/2025',
+    ''
+  ],
+  [
+    'Renda Ativa',
+    'Salário',
+    'R$ 5000,00',
+    '15/05/2025',
+    '15/05/2025',
+    ''
+  ]
+];
+
 const IncomePage = () => {
 
   const [incomeNameList, setIncomeNameList] = useState<Income[]>();
@@ -68,7 +97,7 @@ const IncomePage = () => {
         </div>
         <button type="submit" className="btn btn-primary mb-3">Salvar</button>
       </form>
-      <Table />
+      <Table headers={headers} rows={rows}/>
     </div>
   );
 };
