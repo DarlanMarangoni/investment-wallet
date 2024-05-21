@@ -16,3 +16,7 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 server:
   port: 8081
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
