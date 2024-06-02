@@ -3,6 +3,7 @@ package com.darlanmarangoni.cashcontrol.expense.resource
 import com.darlanmarangoni.cashcontrol.commons.ObjectNotFoundException
 import com.darlanmarangoni.cashcontrol.expense.domain.Expense
 import com.darlanmarangoni.cashcontrol.expense.domain.Bill
+import com.darlanmarangoni.cashcontrol.expense.dto.ExpenseDto
 import com.darlanmarangoni.cashcontrol.expense.repository.ExpenseRepository
 import com.darlanmarangoni.cashcontrol.expense.repository.BillRepository
 import org.springframework.web.bind.annotation.GetMapping
@@ -21,13 +22,20 @@ class ExpenseResource(
 ) {
 
     @GetMapping
-    fun findAllByUserId(@RequestParam(name = "userId", required = true) userId: String): List<Expense> {
+    fun findAllByUserId(@RequestParam(name = "userId", required = true) userId: String): List<ExpenseDto> {
         return expenseRepository.findAllByUserId(userId)
+            .map { ExpenseDto(name = it.name, expenseType = it.expenseType, id = it.id) }
     }
 
-    @PostMapping
-    fun createIncome(@RequestBody expense: Expense) {
-        expenseRepository.save(expense)
+    @PostMapping("/{userId}")
+    fun createExpense(@PathVariable userId: String, @RequestBody expenses: List<ExpenseDto>) {
+        expenseRepository.saveAll(
+            expenses.map { Expense(
+                userId = userId,
+                expenseType = it.expenseType,
+                name = it.name
+            ) }
+        )
     }
 
     @PostMapping("/{expenseId}/bills")
