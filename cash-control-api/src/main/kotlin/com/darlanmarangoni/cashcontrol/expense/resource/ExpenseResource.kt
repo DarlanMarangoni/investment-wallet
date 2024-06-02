@@ -3,6 +3,7 @@ package com.darlanmarangoni.cashcontrol.expense.resource
 import com.darlanmarangoni.cashcontrol.commons.ObjectNotFoundException
 import com.darlanmarangoni.cashcontrol.expense.domain.Expense
 import com.darlanmarangoni.cashcontrol.expense.domain.Bill
+import com.darlanmarangoni.cashcontrol.expense.dto.BillDto
 import com.darlanmarangoni.cashcontrol.expense.dto.ExpenseDto
 import com.darlanmarangoni.cashcontrol.expense.repository.ExpenseRepository
 import com.darlanmarangoni.cashcontrol.expense.repository.BillRepository
@@ -38,13 +39,17 @@ class ExpenseResource(
         )
     }
 
-    @PostMapping("/{expenseId}/bills")
-    fun addReceive(@PathVariable expenseId: Long, @RequestBody bill: Bill) {
-        val expense = expenseRepository.findById(expenseId)
+    @PostMapping("/{userId}/bills")
+    fun addReceive(@PathVariable userId: String, @RequestBody bill: BillDto) {
+        val expense = expenseRepository.findById(bill.expenseId)
         if (expense.isEmpty) {
-            throw ObjectNotFoundException("Expense not found id=$expenseId")
+            throw ObjectNotFoundException("Expense not found id=${bill.expenseId}")
         }
-        bill.expense = expense.get()
-        billRepository.save(bill)
+        billRepository.save(Bill(
+            expense = expense.get(),
+            date = bill.date,
+            projected = bill.projected,
+            actual = bill.actual
+        ))
     }
 }
