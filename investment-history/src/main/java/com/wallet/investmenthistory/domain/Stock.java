@@ -1,70 +1,90 @@
 package com.wallet.investmenthistory.domain;
 
 import com.wallet.investmenthistory.service.BigDecimalUtil;
+import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "tb_stock")
 public class Stock {
-    //    TICKER;
+
+    @Id
+    @SequenceGenerator(
+            name = "tb_stock_id_seq",
+            sequenceName = "tb_stock_id_seq",
+            allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tb_stock_id_seq")
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "ticker")
     private String ticker;
-    //    PRECO;
+    @Column(name = "preco")
     private BigDecimal preco;
-    //    DY;
+    @Column(name = "dy")
     private BigDecimal dividendYield;
-    //    P/L;
+    @Column(name = "pl")
     private BigDecimal pL;
-    //    P/VP;
+    @Column(name = "p_vp")
     private BigDecimal pVP;
-    //    P/ATIVOS;
+    @Column(name = "p_ativos")
     private BigDecimal pAtivos;
-    //    MARGEM BRUTA;
+    @Column(name = "margem_bruta")
     private BigDecimal margemBruta;
-    //    MARGEM EBIT;
+    @Column(name = "margem_ebit")
     private BigDecimal margemEbit;
-    //    MARG. LIQUIDA;
+    @Column(name = "marg_liquida")
     private BigDecimal margemLiquida;
-    //    P/EBIT;
+    @Column(name = "p_ebit")
     private BigDecimal pEbit;
-    //    EV/EBIT;
+    @Column(name = "ev_ebit")
     private BigDecimal evEbit;
-    //    DIVIDA LIQUIDA / EBIT;
+    @Column(name = "divida_liquida_ebit")
     private BigDecimal dividaLiquidaEbit;
-    //    DIV. LIQ. / PATRI.;
+    @Column(name = "div_liquida_patrimonio")
     private BigDecimal DivLiqPatri;
-    //    PSR;
+    @Column(name = "psr")
     private BigDecimal pSR;
-    //    P/CAP. GIRO;
+    @Column(name = "p_cap_giro")
     private BigDecimal pCapGiro;
-    //    P. AT CIR. LIQ.;
+    @Column(name = "p_at_cir_liq")
     private BigDecimal pAtCirLiq;
-    //    LIQ. CORRENTE;
+    @Column(name = "liq_corrente")
     private BigDecimal liqCorrente;
-    //    ROE;
+    @Column(name = "roe")
     private BigDecimal rOE;
-    //    ROA;
+    @Column(name = "roa")
     private BigDecimal rOA;
-    //    ROIC;
+    @Column(name = "roic")
     private BigDecimal rOIC;
-    //    PATRIMONIO / ATIVOS;
+    @Column(name = "patrimonio_ativos")
     private BigDecimal patrimonioAtivos;
-    //    PASSIVOS / ATIVOS;
+    @Column(name = "passivos_ativos")
     private BigDecimal passivosAtivos;
-    //    GIRO ATIVOS;
+    @Column(name = "giro_ativos")
     private BigDecimal giroAtivos;
-    //    CAGR RECEITAS 5 ANOS;
+    @Column(name = "cagr_receitas_5_anos")
     private BigDecimal cAGRReceitas5Anos;
-    //    CAGR LUCROS 5 ANOS;
+    @Column(name = "cagr_lucros_5_anos")
     private BigDecimal cAGRLucros5Anos;
-    //    LIQUIDEZ MEDIA DIARIA;
+    @Column(name = "liquidez_media_diaria")
     private BigDecimal liquidezMediaDiaria;
-    //    VPA;
+    @Column(name = "vpa")
     private BigDecimal vPA;
-    //    LPA;
+    @Column(name = "lpa")
     private BigDecimal lPA;
-    //    PEG Ratio;
+    @Column(name = "peg_ratio")
     private BigDecimal pegRatio;
-    //    VALOR DE MERCADO;
-    private BigDecimal valorDeMercado;
+    @Column(name = "valor_mercado")
+    private BigDecimal valorMercado;
+    @Column(name = "dat_creation")
+    @CreationTimestamp
+    private LocalDateTime datCreation;
+
+    public Stock() {
+    }
 
     public Stock(String[] cols) {
         this.ticker = cols[0];
@@ -96,6 +116,6 @@ public class Stock {
         this.vPA = BigDecimalUtil.readValue(cols[26]);
         this.lPA = BigDecimalUtil.readValue(cols[27]);
         this.pegRatio = BigDecimalUtil.readValue(cols[28]);
-        this.valorDeMercado = BigDecimalUtil.readValue(cols[29]);
+        this.valorMercado = BigDecimalUtil.readValue(cols[29]);
     }
 }

@@ -1,38 +1,58 @@
 package com.wallet.investmenthistory.domain;
 
 import com.wallet.investmenthistory.service.BigDecimalUtil;
+import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "tb_real_state_fund")
 public class RealStateFund {
-//    TICKER;
+
+    @Id
+    @SequenceGenerator(
+            name = "tb_real_state_fund_id_seq",
+            sequenceName = "tb_real_state_fund_id_seq",
+            allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tb_real_state_fund_id_seq")
+
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "ticker")
     private String ticker;
-//    PRECO;
+    @Column(name = "preco")
     private BigDecimal preco;
-//    ULTIMO DIVIDENDO;
+    @Column(name = "ultimo_dividendo")
     private BigDecimal ultimoDividendo;
-//    DY;
+    @Column(name = "dy")
     private BigDecimal dividendYield;
-//    VALOR PATRIMONIAL COTA;
+    @Column(name = "valor_patrimonial_cota")
     private BigDecimal valorPatrimonialCota;
-//    P/VP;
+    @Column(name = "p_vp")
     private BigDecimal pVP;
-//    LIQUIDEZ MEDIA DIARIA;
+    @Column(name = "liquidez_media_diaria")
     private BigDecimal liquidezMediaDiaria;
-//    PERCENTUAL EM CAIXA;
+    @Column(name = "percentual_em_caixa")
     private BigDecimal percentualCaixa;
-//    CAGR DIVIDENDOS 3 ANOS;
+    @Column(name = "cagr_dividendos_3_anos")
     private BigDecimal cAGRDividendosTresAnos;
-//    CAGR VALOR CORA 3 ANOS;
+    @Column(name = "cagr_valor_cota_3_anos")
     private BigDecimal cAGRValorCotaTresAnos;
-//    PATRIMONIO;
+    @Column(name = "patrimonio")
     private BigDecimal patrimonio;
-//    N COTISTAS;
+    @Column(name = "n_cotistas")
     private BigDecimal numeroDeCotista;
-//    GESTAO;
+    @Column(name = "gestao")
     private String gestao;
-//    N COTAS
+    @Column(name = "n_cotas")
     private BigDecimal numeroCotas;
+    @Column(name = "dat_creation")
+    @CreationTimestamp
+    private LocalDateTime datCreation;
+
+    public RealStateFund() {}
 
     public RealStateFund(String[] cols) {
         this.ticker = cols[0];
