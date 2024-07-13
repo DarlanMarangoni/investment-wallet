@@ -2,7 +2,10 @@ package com.wallet.investmenthistory;
 
 import com.google.cloud.functions.Context;
 import com.google.cloud.functions.RawBackgroundFunction;
-import com.wallet.investmenthistory.service.GreetingService;
+import com.wallet.investmenthistory.enums.InvestmentType;
+import com.wallet.investmenthistory.service.DownloadService;
+import com.wallet.investmenthistory.service.RealStateFundReader;
+import com.wallet.investmenthistory.service.StockReader;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
 
@@ -10,15 +13,17 @@ import jakarta.inject.Named;
 @ApplicationScoped
 public class RawBackgroundFunctionPubSub implements RawBackgroundFunction {
 
-    final GreetingService greetingService;
+    final DownloadService downloadService;
 
-    public RawBackgroundFunctionPubSub(GreetingService greetingService) {
-        this.greetingService = greetingService;
+    public RawBackgroundFunctionPubSub(DownloadService downloadService) {
+        this.downloadService = downloadService;
     }
 
     @Override
     public void accept(String event, Context context) throws Exception {
-        System.out.println("PubSub event: " + event);
-        System.out.println("Be polite, say " + greetingService.hello());
+        var stockCSV = downloadService.dowload(InvestmentType.STOCK.getType());
+        var realStateFundCSV = downloadService.dowload(InvestmentType.FII.getType());
+        var stockList = new StockReader().toList(stockCSV);
+        var realStateFundList = new RealStateFundReader().toList(realStateFundCSV);
     }
 }
