@@ -1,12 +1,12 @@
 server:
-  port: 8081
+  port: 8080
 spring:
   application:
     name: investment
   datasource:
-    url: jdbc:postgresql://localhost:5432/investment_db
-    username: root
-    password: root
+    url: ${DATABASE_URL}
+    username: ${USERNAME}
+    password: ${PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update

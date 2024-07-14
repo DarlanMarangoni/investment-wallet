@@ -31,8 +31,7 @@ public class ScheduledTasks {
         this.stockService = stockService;
     }
 
-//    @Scheduled(cron = "0 0 10 * * ?")
-    @Scheduled(fixedDelay = 50000)
+    @Scheduled(cron = "0 0 10 * * ?")
     public void reportCurrentTime() throws IOException, InterruptedException, CsvValidationException {
         log.info("Task started at {}", LocalDateTime.now());
         var realStateFundCSV = downloadService.dowload(InvestmentType.FII.getType());
