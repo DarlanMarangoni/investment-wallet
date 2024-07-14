@@ -118,4 +118,260 @@ public class Stock {
         this.pegRatio = BigDecimalUtil.readValue(cols[28]);
         this.valorMercado = BigDecimalUtil.readValue(cols[29]);
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTicker() {
+        return ticker;
+    }
+
+    public void setTicker(String ticker) {
+        this.ticker = ticker;
+    }
+
+    public BigDecimal getPreco() {
+        return preco;
+    }
+
+    public void setPreco(BigDecimal preco) {
+        this.preco = preco;
+    }
+
+    public BigDecimal getDividendYield() {
+        return dividendYield;
+    }
+
+    public void setDividendYield(BigDecimal dividendYield) {
+        this.dividendYield = dividendYield;
+    }
+
+    public BigDecimal getpL() {
+        return pL;
+    }
+
+    public void setpL(BigDecimal pL) {
+        this.pL = pL;
+    }
+
+    public BigDecimal getpVP() {
+        return pVP;
+    }
+
+    public void setpVP(BigDecimal pVP) {
+        this.pVP = pVP;
+    }
+
+    public BigDecimal getpAtivos() {
+        return pAtivos;
+    }
+
+    public void setpAtivos(BigDecimal pAtivos) {
+        this.pAtivos = pAtivos;
+    }
+
+    public BigDecimal getMargemBruta() {
+        return margemBruta;
+    }
+
+    public void setMargemBruta(BigDecimal margemBruta) {
+        this.margemBruta = margemBruta;
+    }
+
+    public BigDecimal getMargemEbit() {
+        return margemEbit;
+    }
+
+    public void setMargemEbit(BigDecimal margemEbit) {
+        this.margemEbit = margemEbit;
+    }
+
+    public BigDecimal getMargemLiquida() {
+        return margemLiquida;
+    }
+
+    public void setMargemLiquida(BigDecimal margemLiquida) {
+        this.margemLiquida = margemLiquida;
+    }
+
+    public BigDecimal getpEbit() {
+        return pEbit;
+    }
+
+    public void setpEbit(BigDecimal pEbit) {
+        this.pEbit = pEbit;
+    }
+
+    public BigDecimal getEvEbit() {
+        return evEbit;
+    }
+
+    public void setEvEbit(BigDecimal evEbit) {
+        this.evEbit = evEbit;
+    }
+
+    public BigDecimal getDividaLiquidaEbit() {
+        return dividaLiquidaEbit;
+    }
+
+    public void setDividaLiquidaEbit(BigDecimal dividaLiquidaEbit) {
+        this.dividaLiquidaEbit = dividaLiquidaEbit;
+    }
+
+    public BigDecimal getDivLiqPatri() {
+        return DivLiqPatri;
+    }
+
+    public void setDivLiqPatri(BigDecimal divLiqPatri) {
+        DivLiqPatri = divLiqPatri;
+    }
+
+    public BigDecimal getpSR() {
+        return pSR;
+    }
+
+    public void setpSR(BigDecimal pSR) {
+        this.pSR = pSR;
+    }
+
+    public BigDecimal getpCapGiro() {
+        return pCapGiro;
+    }
+
+    public void setpCapGiro(BigDecimal pCapGiro) {
+        this.pCapGiro = pCapGiro;
+    }
+
+    public BigDecimal getpAtCirLiq() {
+        return pAtCirLiq;
+    }
+
+    public void setpAtCirLiq(BigDecimal pAtCirLiq) {
+        this.pAtCirLiq = pAtCirLiq;
+    }
+
+    public BigDecimal getLiqCorrente() {
+        return liqCorrente;
+    }
+
+    public void setLiqCorrente(BigDecimal liqCorrente) {
+        this.liqCorrente = liqCorrente;
+    }
+
+    public BigDecimal getrOE() {
+        return rOE;
+    }
+
+    public void setrOE(BigDecimal rOE) {
+        this.rOE = rOE;
+    }
+
+    public BigDecimal getrOA() {
+        return rOA;
+    }
+
+    public void setrOA(BigDecimal rOA) {
+        this.rOA = rOA;
+    }
+
+    public BigDecimal getrOIC() {
+        return rOIC;
+    }
+
+    public void setrOIC(BigDecimal rOIC) {
+        this.rOIC = rOIC;
+    }
+
+    public BigDecimal getPatrimonioAtivos() {
+        return patrimonioAtivos;
+    }
+
+    public void setPatrimonioAtivos(BigDecimal patrimonioAtivos) {
+        this.patrimonioAtivos = patrimonioAtivos;
+    }
+
+    public BigDecimal getPassivosAtivos() {
+        return passivosAtivos;
+    }
+
+    public void setPassivosAtivos(BigDecimal passivosAtivos) {
+        this.passivosAtivos = passivosAtivos;
+    }
+
+    public BigDecimal getGiroAtivos() {
+        return giroAtivos;
+    }
+
+    public void setGiroAtivos(BigDecimal giroAtivos) {
+        this.giroAtivos = giroAtivos;
+    }
+
+    public BigDecimal getcAGRReceitas5Anos() {
+        return cAGRReceitas5Anos;
+    }
+
+    public void setcAGRReceitas5Anos(BigDecimal cAGRReceitas5Anos) {
+        this.cAGRReceitas5Anos = cAGRReceitas5Anos;
+    }
+
+    public BigDecimal getcAGRLucros5Anos() {
+        return cAGRLucros5Anos;
+    }
+
+    public void setcAGRLucros5Anos(BigDecimal cAGRLucros5Anos) {
+        this.cAGRLucros5Anos = cAGRLucros5Anos;
+    }
+
+    public BigDecimal getLiquidezMediaDiaria() {
+        return liquidezMediaDiaria;
+    }
+
+    public void setLiquidezMediaDiaria(BigDecimal liquidezMediaDiaria) {
+        this.liquidezMediaDiaria = liquidezMediaDiaria;
+    }
+
+    public BigDecimal getvPA() {
+        return vPA;
+    }
+
+    public void setvPA(BigDecimal vPA) {
+        this.vPA = vPA;
+    }
+
+    public BigDecimal getlPA() {
+        return lPA;
+    }
+
+    public void setlPA(BigDecimal lPA) {
+        this.lPA = lPA;
+    }
+
+    public BigDecimal getPegRatio() {
+        return pegRatio;
+    }
+
+    public void setPegRatio(BigDecimal pegRatio) {
+        this.pegRatio = pegRatio;
+    }
+
+    public BigDecimal getValorMercado() {
+        return valorMercado;
+    }
+
+    public void setValorMercado(BigDecimal valorMercado) {
+        this.valorMercado = valorMercado;
+    }
+
+    public LocalDateTime getDatCreation() {
+        return datCreation;
+    }
+
+    public void setDatCreation(LocalDateTime datCreation) {
+        this.datCreation = datCreation;
+    }
 }

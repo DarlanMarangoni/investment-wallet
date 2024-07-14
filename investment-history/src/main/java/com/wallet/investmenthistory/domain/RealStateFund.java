@@ -70,4 +70,132 @@ public class RealStateFund {
         this.gestao = cols[12];
         this.numeroCotas = BigDecimalUtil.readValue(cols[13]);
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTicker() {
+        return ticker;
+    }
+
+    public void setTicker(String ticker) {
+        this.ticker = ticker;
+    }
+
+    public BigDecimal getPreco() {
+        return preco;
+    }
+
+    public void setPreco(BigDecimal preco) {
+        this.preco = preco;
+    }
+
+    public BigDecimal getUltimoDividendo() {
+        return ultimoDividendo;
+    }
+
+    public void setUltimoDividendo(BigDecimal ultimoDividendo) {
+        this.ultimoDividendo = ultimoDividendo;
+    }
+
+    public BigDecimal getDividendYield() {
+        return dividendYield;
+    }
+
+    public void setDividendYield(BigDecimal dividendYield) {
+        this.dividendYield = dividendYield;
+    }
+
+    public BigDecimal getValorPatrimonialCota() {
+        return valorPatrimonialCota;
+    }
+
+    public void setValorPatrimonialCota(BigDecimal valorPatrimonialCota) {
+        this.valorPatrimonialCota = valorPatrimonialCota;
+    }
+
+    public BigDecimal getpVP() {
+        return pVP;
+    }
+
+    public void setpVP(BigDecimal pVP) {
+        this.pVP = pVP;
+    }
+
+    public BigDecimal getLiquidezMediaDiaria() {
+        return liquidezMediaDiaria;
+    }
+
+    public void setLiquidezMediaDiaria(BigDecimal liquidezMediaDiaria) {
+        this.liquidezMediaDiaria = liquidezMediaDiaria;
+    }
+
+    public BigDecimal getPercentualCaixa() {
+        return percentualCaixa;
+    }
+
+    public void setPercentualCaixa(BigDecimal percentualCaixa) {
+        this.percentualCaixa = percentualCaixa;
+    }
+
+    public BigDecimal getcAGRDividendosTresAnos() {
+        return cAGRDividendosTresAnos;
+    }
+
+    public void setcAGRDividendosTresAnos(BigDecimal cAGRDividendosTresAnos) {
+        this.cAGRDividendosTresAnos = cAGRDividendosTresAnos;
+    }
+
+    public BigDecimal getcAGRValorCotaTresAnos() {
+        return cAGRValorCotaTresAnos;
+    }
+
+    public void setcAGRValorCotaTresAnos(BigDecimal cAGRValorCotaTresAnos) {
+        this.cAGRValorCotaTresAnos = cAGRValorCotaTresAnos;
+    }
+
+    public BigDecimal getPatrimonio() {
+        return patrimonio;
+    }
+
+    public void setPatrimonio(BigDecimal patrimonio) {
+        this.patrimonio = patrimonio;
+    }
+
+    public BigDecimal getNumeroDeCotista() {
+        return numeroDeCotista;
+    }
+
+    public void setNumeroDeCotista(BigDecimal numeroDeCotista) {
+        this.numeroDeCotista = numeroDeCotista;
+    }
+
+    public String getGestao() {
+        return gestao;
+    }
+
+    public void setGestao(String gestao) {
+        this.gestao = gestao;
+    }
+
+    public BigDecimal getNumeroCotas() {
+        return numeroCotas;
+    }
+
+    public void setNumeroCotas(BigDecimal numeroCotas) {
+        this.numeroCotas = numeroCotas;
+    }
+
+    public LocalDateTime getDatCreation() {
+        return datCreation;
+    }
+
+    public void setDatCreation(LocalDateTime datCreation) {
+        this.datCreation = datCreation;
+    }
 }
