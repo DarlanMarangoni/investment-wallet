@@ -61,4 +61,5 @@ If you want to learn more about building native executables, please consult <htt
 
 gcloud functions deploy investment-history-job \
 --entry-point=io.quarkus.gcp.functions.QuarkusBackgroundFunction \
---runtime=java21 --trigger-resource trigger_topic --trigger-event google.pubsub.topic.publish --source=target/deployment
+--runtime=java21 --trigger-resource trigger_topic --trigger-event google.pubsub.topic.publish --source=target/deployment --set-env-vars DATABASE_URL=jdbc:postgresql://3.80.78.255:5432/db_investimento,USERNAME=darlan-user,PASSWORD=A6w8y2k3@2024
+
