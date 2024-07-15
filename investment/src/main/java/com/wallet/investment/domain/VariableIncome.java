@@ -1,10 +1,7 @@
 package com.wallet.investment.domain;
 
 import com.wallet.investment.enums.VariableIncomeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +11,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
+@Table(name = "TB_VARIABLE_INCOME")
 @PrimaryKeyJoinColumn(name = "investmentId")
 public class VariableIncome extends Investment {
 
