@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "tb_real_state_fund")
+@Table(name = "TB_REAL_STATE_FUND")
 public class RealStateFund {
 
     @Id
