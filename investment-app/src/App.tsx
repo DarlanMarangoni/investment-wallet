@@ -1,7 +1,11 @@
 import './App.css';
 import 'primereact/resources/themes/lara-dark-blue/theme.css';
 import 'primeicons/primeicons.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
 import { Menubar } from 'primereact/menubar';
+import Stock from './pages/Stock';
+import RealStateFund from './pages/RealStateFund';
 
 function App() {
     const items = [
@@ -10,9 +14,14 @@ function App() {
         {label: 'Fundos imobiliários', icon: 'pi pi-fw pi-building'}
     ]
     return (
-        <div className="App">
-            <Menubar model={items}/>
-        </div>
+            <BrowserRouter>
+                <Menubar model={ items }/>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/Stock" element={<Stock />} />
+                    <Route path="/RealStateFund" element={<RealStateFund />} />
+                </Routes>
+            </BrowserRouter>
     );
 }
 
