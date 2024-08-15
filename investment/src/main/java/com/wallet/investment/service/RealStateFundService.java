@@ -1,6 +1,8 @@
 package com.wallet.investment.service;
 
 import com.wallet.investment.domain.RealStateFund;
+import com.wallet.investment.enums.InvestmentType;
+import com.wallet.investment.records.VariableIncomeItemRecord;
 import com.wallet.investment.records.VariableIncomeRecord;
 import com.wallet.investment.repositories.RealStateFundRepository;
 import com.wallet.investment.util.LocalDateTimeUtil;
@@ -9,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -30,9 +33,17 @@ public class RealStateFundService implements VariableIncomeService<RealStateFund
     }
 
     @Override
-    public List<VariableIncomeRecord> findAll() {
-        return variableIncomeRecords(realStateFundRepository
+    public VariableIncomeRecord findAll() {
+        var variableIncomeItemRecords = variableIncomeRecords(realStateFundRepository
                 .findTickerBalancesAfterDate(LocalDateTimeUtil
                         .roundSeconds(realStateFundRepository.findLastCreated().getDatCreation())));
+        var reduce = variableIncomeItemRecords.stream()
+                .map(VariableIncomeItemRecord::value)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        return new VariableIncomeRecord(
+                InvestmentType.FII.getType(),
+                reduce,
+                variableIncomeItemRecords
+        );
     }
 }

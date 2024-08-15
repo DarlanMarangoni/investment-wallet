@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/real-state-fund")
 public class RealStateFundResource {
@@ -20,7 +18,7 @@ public class RealStateFundResource {
     }
 
     @GetMapping
-    public List<VariableIncomeRecord> getRealStateFund() {
+    public VariableIncomeRecord getRealStateFund() {
         return variableIncomeService.findAll();
     }
 }
