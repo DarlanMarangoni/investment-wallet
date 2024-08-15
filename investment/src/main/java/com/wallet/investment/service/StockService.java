@@ -41,7 +41,7 @@ public class StockService implements VariableIncomeService<Stock> {
                 .map(VariableIncomeItemRecord::value)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
         return new VariableIncomeRecord(
-                InvestmentType.STOCK.getType(),
+                InvestmentType.STOCK.getDescription(),
                 reduce,
                 variableIncomeItemRecords
         );

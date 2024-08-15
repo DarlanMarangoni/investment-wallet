@@ -41,7 +41,7 @@ public class RealStateFundService implements VariableIncomeService<RealStateFund
                 .map(VariableIncomeItemRecord::value)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
         return new VariableIncomeRecord(
-                InvestmentType.FII.getType(),
+                InvestmentType.FII.getDescription(),
                 reduce,
                 variableIncomeItemRecords
         );
