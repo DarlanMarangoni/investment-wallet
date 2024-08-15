@@ -4,6 +4,7 @@ import com.wallet.investment.enums.InvestmentType;
 import com.wallet.investment.enums.TransactionType;
 import com.wallet.investment.records.BrockerageNoteRecord;
 import jakarta.persistence.*;
+import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
@@ -11,6 +12,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Getter
 @Entity
 @Table(name = "TB_TRANSATION_ORDER")
 public class TransactionOrder {
