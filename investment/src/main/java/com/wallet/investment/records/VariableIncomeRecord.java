@@ -1,10 +1,10 @@
 package com.wallet.investment.records;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.List;
 
 public record VariableIncomeRecord(
-        String tiker,
-        LocalDate date,
-        BigDecimal value
+        String type,
+        BigDecimal total,
+        List<VariableIncomeItemRecord> variableIncomeItemRecordList
 ){}
