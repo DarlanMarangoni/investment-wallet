@@ -1,0 +1,13 @@
+.p-card {
+    min-width: 20rem;
+}
+
+.card-body-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card-body {
+    font-size: 36px;
+    font-weight: bold;
+}
