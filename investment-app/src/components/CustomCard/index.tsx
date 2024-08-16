@@ -6,14 +6,12 @@ type Props = {
     value: string;
 }
 
-export const CustomCard = ({ title, value }: Props) => {
+export const CustomCard = ({title, value}: Props) => {
     return (
         <Card title={title}>
-            <div className="card-body-container">
-                <span className="card-body">
-                    R${ value }
-                </span>
-            </div>
+            <span className="card-body">
+                R${value}
+            </span>
         </Card>
     );
 }

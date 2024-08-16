@@ -1,6 +1,7 @@
 import './App.css';
 import 'primereact/resources/themes/lara-dark-blue/theme.css';
 import 'primeicons/primeicons.css';
+import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Stock from './pages/Stock';
