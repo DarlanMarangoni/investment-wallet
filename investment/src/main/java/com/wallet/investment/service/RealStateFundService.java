@@ -46,4 +46,9 @@ public class RealStateFundService implements VariableIncomeService<RealStateFund
                 variableIncomeItemRecords
         );
     }
+
+    @Override
+    public BigDecimal currentValue() {
+        return findAll().total();
+    }
 }

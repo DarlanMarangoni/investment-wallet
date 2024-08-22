@@ -21,4 +21,7 @@ public interface VariableIncomeService<T> {
     void saveAll(List<T> stockList);
 
     VariableIncomeRecord findAll();
+
+    BigDecimal currentValue();
+
 }

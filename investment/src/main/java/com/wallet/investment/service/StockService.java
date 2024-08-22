@@ -46,4 +46,9 @@ public class StockService implements VariableIncomeService<Stock> {
                 variableIncomeItemRecords
         );
     }
+
+    @Override
+    public BigDecimal currentValue() {
+        return findAll().total();
+    }
 }
