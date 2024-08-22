@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/brockerage-note")
+@CrossOrigin("*")
 public class TransationOrderResource {
 
     private final TransactionRepository transactionRepository;
