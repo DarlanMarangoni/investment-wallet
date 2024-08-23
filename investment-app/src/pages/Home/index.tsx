@@ -6,6 +6,7 @@ import axios from 'axios';
 import { Resume } from '../../types/resume';
 import { BASE_URL } from '../../shared/commons';
 import { Income } from '../../types/income';
+import { PieChart } from '../../components/PieChart';
 
 export default function Home() {
 
@@ -18,15 +19,24 @@ export default function Home() {
             .then((response) => {
                 setResume(response.data)
             })
+    }, [])
+
+    useEffect(() => {
         axios.get(`${BASE_URL}/real-state-fund`)
             .then((response) => {
+                console.log(response)
                 setFii(response.data)
             })
+    },[]);
+
+    useEffect(() => {
         axios.get(`${BASE_URL}/stocks`)
             .then((response) => {
+                console.log(response)
                 setStock(response.data)
             })
-    }, [])
+    },[]);
+
 
     return (
         <div className="container">
@@ -44,12 +54,13 @@ export default function Home() {
                     <CustomCard title="Valor em Ações" value={stock?.total}/>
                 </div>
             </div>
-            <div className="row mt-4">
-                <div className="col-lg-6">
+            <div className="row">
+                <div className="col-lg-6 mt-4">
                     <LineChart/>
                 </div>
-                <div className="col-lg-6">
-                    <LineChart/>
+                <div className="col-lg-6 mt-4">
+                    <PieChart labels={[stock?.type, fii?.type]} values={[stock?.total, fii?.total]}
+                              loading={fii !== undefined && stock !== undefined}/>
                 </div>
             </div>
         </div>
