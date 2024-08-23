@@ -48,17 +48,16 @@ export const PieChart = ({labels, values, loading}: Props) => {
     }, [loading]);
 
     return (
-        <Card>
+        <Card style={{display: 'flex', justifyContent: 'center'}} >
             {
                 loading ?
                     <Chart
                         type="pie"
                         data={chartData}
                         options={chartOptions}
-                        className="w-full md:w-15rem"
-                        style={{height: '300px', display: 'flex', justifyContent: 'center'}}/> :
+                        className="w-full md:w-15rem"/> :
                     <Skeleton shape="circle" size="300px"
-                              style={{display: 'flex', justifyContent: 'center'}} />
+                               />
 
             }
         </Card>
