@@ -27,7 +27,7 @@ export default function Home() {
                 console.log(response)
                 setFii(response.data)
             })
-    },[]);
+    }, []);
 
     useEffect(() => {
         axios.get(`${BASE_URL}/stocks`)
@@ -35,23 +35,23 @@ export default function Home() {
                 console.log(response)
                 setStock(response.data)
             })
-    },[]);
+    }, []);
 
 
     return (
         <div className="container">
             <div className="row">
                 <div className="mt-4 col-md-6 col-lg-3">
-                    <CustomCard title="Valor investido" value={resume?.invested_value}/>
+                    <CustomCard title="Valor investido" value={resume?.invested_value} loading={resume !== undefined}/>
                 </div>
                 <div className="mt-4 col-md-6 col-lg-3">
-                    <CustomCard title="Valor de mercado" value={resume?.current_value}/>
+                    <CustomCard title="Valor de mercado" value={resume?.current_value} loading={resume !== undefined}/>
                 </div>
                 <div className="mt-4 col-md-6 col-lg-3">
-                    <CustomCard title="Valor em FII" value={fii?.total}/>
+                    <CustomCard title="Valor em FII" value={fii?.total} loading={fii !== undefined}/>
                 </div>
                 <div className="mt-4 col-md-6 col-lg-3">
-                    <CustomCard title="Valor em Ações" value={stock?.total}/>
+                    <CustomCard title="Valor em Ações" value={stock?.total} loading={stock !== undefined}/>
                 </div>
             </div>
             <div className="row">
