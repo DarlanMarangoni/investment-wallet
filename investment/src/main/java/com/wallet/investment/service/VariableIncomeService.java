@@ -1,5 +1,6 @@
 package com.wallet.investment.service;
 
+import com.wallet.investment.records.LineChartHomeDataRecord;
 import com.wallet.investment.records.VariableIncomeItemRecord;
 import com.wallet.investment.records.VariableIncomeRecord;
 
@@ -24,4 +25,5 @@ public interface VariableIncomeService<T> {
 
     BigDecimal currentValue();
 
+    List<LineChartHomeDataRecord> findAllByDay();
 }
