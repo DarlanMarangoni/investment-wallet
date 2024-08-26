@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,19 +32,30 @@ public class HomeResource {
 
     @GetMapping("/line-chart-data")
     public List<LineChartHomeDataRecord> getLineChartData() {
-        List<LineChartHomeDataRecord> fullList = new ArrayList<>(0);
-        var firstList = stockService.findAllByDay();
-        var secondList = realStateFundService.findAllByDay();
-        fullList.addAll(firstList);
-        fullList.addAll(secondList);
-        return fullList.stream()
+        List<LineChartHomeDataRecord> investments = new ArrayList<>(0);
+        investments.addAll(stockService.findAllByDay());
+        investments.addAll(realStateFundService.findAllByDay());
+        var investmentsByDateTime = investments.stream()
                 .collect(Collectors.groupingBy(
                         LineChartHomeDataRecord::date,
                         Collectors.mapping(
                                 LineChartHomeDataRecord::total,
                                 Collectors.reducing(BigDecimal.ZERO, BigDecimal::add)
                         )
-                )).entrySet().stream().map(m -> new LineChartHomeDataRecord(m.getValue(), m.getKey()))
+                ));
+        var maxByDay = new HashMap<LocalDateTime, LineChartHomeDataRecord>();
+        investmentsByDateTime.forEach((key, value) -> {
+            if (maxByDay.get(key.toLocalDate().atStartOfDay()) == null) {
+                maxByDay.put(key.toLocalDate().atStartOfDay(), new LineChartHomeDataRecord(value, key.toLocalDate().atStartOfDay()));
+            } else {
+                LineChartHomeDataRecord lineChartHomeDataRecord = maxByDay.get(key.toLocalDate().atStartOfDay());
+                if (lineChartHomeDataRecord != null && value.compareTo(lineChartHomeDataRecord.total()) > 0) {
+                    maxByDay.put(key.toLocalDate().atStartOfDay(), new LineChartHomeDataRecord(value, key.toLocalDate().atStartOfDay()));
+                }
+            }
+        });
+        return maxByDay.entrySet().stream()
+                .map(m -> new LineChartHomeDataRecord(m.getValue().total(), m.getKey()))
                 .sorted(Comparator.comparing(LineChartHomeDataRecord::date))
                 .toList();
     }
