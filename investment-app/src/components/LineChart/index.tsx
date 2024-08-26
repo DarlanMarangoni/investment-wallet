@@ -1,7 +1,8 @@
 import './style.css';
 import { Chart } from 'primereact/chart';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card } from 'primereact/card';
+import { Skeleton } from 'primereact/skeleton';
 
 type Props = {
     labels: string[] | undefined;
@@ -10,7 +11,7 @@ type Props = {
 }
 
 
-export const LineChart = ({labels,values,loading}: Props) => {
+export const LineChart = ({labels, values, loading}: Props) => {
     const [chartData, setChartData] = useState({});
     const [chartOptions, setChartOptions] = useState({});
 
@@ -23,7 +24,7 @@ export const LineChart = ({labels,values,loading}: Props) => {
             labels: labels,
             datasets: [
                 {
-                    label: 'carteira',
+                    label: 'Saldo',
                     data: values,
                     fill: false,
                     borderColor: documentStyle.getPropertyValue('--blue-500'),
@@ -67,7 +68,11 @@ export const LineChart = ({labels,values,loading}: Props) => {
 
     return (
         <Card>
-            <Chart type="line" data={chartData} options={chartOptions}/>
+            {
+                loading ?
+                    <Chart type="line" data={chartData} options={chartOptions}/> :
+                    <Skeleton width="450px" height="450px" />
+            }
         </Card>
     );
 }

@@ -48,7 +48,7 @@ export const PieChart = ({labels, values, loading}: Props) => {
     }, [loading]);
 
     return (
-        <Card style={{display: 'flex', justifyContent: 'center'}} >
+        <Card style={{display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '580px'}} >
             {
                 loading ?
                     <Chart
