@@ -13,6 +13,7 @@ export default function Home() {
     const [resume, setResume] = useState<Resume>();
     const [fii, setFii] = useState<Income>();
     const [stock, setStock] = useState<Income>();
+    const [homeLineChart, setHomeLineChart] = useState<any[]>();
 
     useEffect(() => {
         axios.get(`${BASE_URL}/brockerage-note/resume`)
@@ -24,7 +25,6 @@ export default function Home() {
     useEffect(() => {
         axios.get(`${BASE_URL}/real-state-fund`)
             .then((response) => {
-                console.log(response)
                 setFii(response.data)
             })
     }, []);
@@ -32,8 +32,14 @@ export default function Home() {
     useEffect(() => {
         axios.get(`${BASE_URL}/stocks`)
             .then((response) => {
-                console.log(response)
                 setStock(response.data)
+            })
+    }, []);
+
+    useEffect(() => {
+        axios.get(`${BASE_URL}/home/line-chart-data`)
+            .then((response) => {
+                setHomeLineChart(response.data)
             })
     }, []);
 
@@ -56,7 +62,10 @@ export default function Home() {
             </div>
             <div className="row">
                 <div className="col-lg-6 mt-4">
-                    <LineChart/>
+                    <LineChart labels={homeLineChart?.map(m => m.date)}
+                               values={homeLineChart?.map(m => m.total)}
+                               loading={homeLineChart !== undefined}
+                    />
                 </div>
                 <div className="col-lg-6 mt-4">
                     <PieChart labels={[stock?.type, fii?.type]} values={[stock?.total, fii?.total]}
