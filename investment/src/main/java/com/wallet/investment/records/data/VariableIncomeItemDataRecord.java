@@ -1,4 +1,4 @@
-package com.wallet.investment.records;
+package com.wallet.investment.records.data;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
@@ -7,9 +7,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public record VariableIncomeItemRecord(
+public record VariableIncomeItemDataRecord(
         String tiker,
-        LocalDate date,
         BigDecimal value,
-        BigDecimal percentil
+        LocalDate date
 ){}

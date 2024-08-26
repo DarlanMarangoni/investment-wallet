@@ -5,6 +5,7 @@ import com.wallet.investment.enums.InvestmentType;
 import com.wallet.investment.records.LineChartHomeDataRecord;
 import com.wallet.investment.records.VariableIncomeItemRecord;
 import com.wallet.investment.records.VariableIncomeRecord;
+import com.wallet.investment.records.data.VariableIncomeItemDataRecord;
 import com.wallet.investment.repositories.StockRepository;
 import com.wallet.investment.util.LocalDateTimeUtil;
 import jakarta.transaction.Transactional;
@@ -13,6 +14,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -37,16 +40,21 @@ public class StockService implements VariableIncomeService<Stock> {
 
     @Override
     public VariableIncomeRecord findAll() {
-        var variableIncomeItemRecords = variableIncomeRecords(stockRepository
+        var variableIncomeItemDataRecords = variableIncomeRecords(stockRepository
                 .findTickerBalancesAfterDate(LocalDateTimeUtil
                         .roundSeconds(stockRepository.findLastCreated().getDatCreation())));
-        var reduce = variableIncomeItemRecords.stream()
-                .map(VariableIncomeItemRecord::value)
+        var reduce = variableIncomeItemDataRecords.stream()
+                .map(VariableIncomeItemDataRecord::value)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
         return new VariableIncomeRecord(
                 InvestmentType.STOCK.getDescription(),
                 reduce,
-                variableIncomeItemRecords
+                variableIncomeItemDataRecords.stream().map(m -> new VariableIncomeItemRecord(
+                        m.tiker(),
+                        m.date(),
+                        m.value(),
+                        m.value().divide(reduce,new MathContext(10, RoundingMode.HALF_UP)).multiply(new BigDecimal(100))
+                )).toList()
         );
     }
 
