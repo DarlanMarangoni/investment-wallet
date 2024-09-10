@@ -26,9 +26,11 @@ public class StockService implements VariableIncomeService<Stock> {
     private static final Logger LOGGER = LoggerFactory.getLogger(StockService.class);
 
     final StockRepository stockRepository;
+    final TransationService transationService;
 
-    public StockService(StockRepository stockRepository) {
+    public StockService(StockRepository stockRepository, TransationService transationService) {
         this.stockRepository = stockRepository;
+        this.transationService = transationService;
     }
 
     @Override
@@ -40,8 +42,9 @@ public class StockService implements VariableIncomeService<Stock> {
 
     @Override
     public VariableIncomeRecord findAll() {
+        var stocks = filterPositive(transationService.findAllTransactionsByType(InvestmentType.STOCK));
         var variableIncomeItemDataRecords = variableIncomeRecords(stockRepository
-                .findTickerBalancesAfterDate(LocalDateTimeUtil
+                .findTickerBalancesAfterDate(stocks, LocalDateTimeUtil
                         .roundSeconds(stockRepository.findLastCreated().getDatCreation())));
         var reduce = variableIncomeItemDataRecords.stream()
                 .map(VariableIncomeItemDataRecord::value)

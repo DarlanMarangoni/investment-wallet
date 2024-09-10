@@ -16,12 +16,12 @@ public interface RealStateFundRepository extends JpaRepository<RealStateFund, Lo
         SELECT tto.ticker, SUM(tto.amount) * trsf.preco AS saldo, trsf.dat_creation
         FROM tb_transation_order tto
         INNER JOIN tb_real_state_fund trsf ON tto.ticker = trsf.ticker
-        WHERE tto.ticker IN (SELECT DISTINCT tto_inner.ticker FROM tb_transation_order tto_inner)
+        WHERE tto.ticker IN :fiis
           AND trsf.dat_creation > :date
         GROUP BY tto.ticker, trsf.dat_creation, trsf.preco
         ORDER BY trsf.dat_creation DESC
     """, nativeQuery = true)
-    List<Object[]> findTickerBalancesAfterDate(@Param("date") LocalDateTime date);
+    List<Object[]> findTickerBalancesAfterDate(@Param("fiis") List<String> fiis, @Param("date") LocalDateTime date);
 
     default RealStateFund findLastCreated() {
         return findAll(

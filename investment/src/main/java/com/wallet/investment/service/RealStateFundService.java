@@ -26,9 +26,11 @@ public class RealStateFundService implements VariableIncomeService<RealStateFund
     private static final Logger LOGGER = LoggerFactory.getLogger(RealStateFundService.class);
 
     final RealStateFundRepository realStateFundRepository;
+    final TransationService transationService;
 
-    public RealStateFundService(RealStateFundRepository realStateFundRepository) {
+    public RealStateFundService(RealStateFundRepository realStateFundRepository, TransationService transationService) {
         this.realStateFundRepository = realStateFundRepository;
+        this.transationService = transationService;
     }
 
     @Override
@@ -40,8 +42,9 @@ public class RealStateFundService implements VariableIncomeService<RealStateFund
 
     @Override
     public VariableIncomeRecord findAll() {
+        var fiis = filterPositive(transationService.findAllTransactionsByType(InvestmentType.FII));
         var variableIncomeItemDataRecords = variableIncomeRecords(realStateFundRepository
-                .findTickerBalancesAfterDate(LocalDateTimeUtil
+                .findTickerBalancesAfterDate(fiis, LocalDateTimeUtil
                         .roundSeconds(realStateFundRepository.findLastCreated().getDatCreation())));
         var reduce = variableIncomeItemDataRecords.stream()
                 .map(VariableIncomeItemDataRecord::value)

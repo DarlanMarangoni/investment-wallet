@@ -16,12 +16,12 @@ public interface StockRepository extends JpaRepository<Stock, Long> {
                 SELECT tto.ticker, SUM(tto.amount) * ts.preco AS saldo, ts.dat_creation 
                 FROM tb_transation_order tto
                 INNER JOIN tb_stock ts ON tto.ticker = ts.ticker
-                WHERE tto.ticker IN (SELECT DISTINCT tto_inner.ticker FROM tb_transation_order tto_inner)
+                WHERE tto.ticker IN :stocks
                   AND ts.dat_creation > :date
                 GROUP BY tto.ticker, ts.dat_creation, ts.preco
                 ORDER BY ts.dat_creation DESC
             """, nativeQuery = true)
-    List<Object[]> findTickerBalancesAfterDate(@Param("date") LocalDateTime date);
+    List<Object[]> findTickerBalancesAfterDate(@Param("stocks") List<String> stocks, @Param("date") LocalDateTime date);
 
     @Query(value = """
             SELECT SUM(saldo) AS total_saldo
