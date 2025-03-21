@@ -1,0 +1,8 @@
+GET http://localhost:8080/real-state-fund
+Accept: application/json
+
+###
+GET http://localhost:8080/stocks
+Accept: application/json
+
+###
