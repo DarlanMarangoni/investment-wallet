@@ -1,0 +1,15 @@
+package com.darlanmarangoni.investmentapi.records;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
+public record LineChartHomeDataRecord(
+        BigDecimal total,
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+        LocalDateTime date
+){}
