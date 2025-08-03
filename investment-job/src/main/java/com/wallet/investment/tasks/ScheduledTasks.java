@@ -7,8 +7,8 @@ import com.wallet.investment.reader.StockReader;
 import com.wallet.investment.service.DownloadService;
 import com.wallet.investment.service.RealStateFundService;
 import com.wallet.investment.service.StockService;
-import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -30,8 +30,7 @@ public class ScheduledTasks {
         this.stockService = stockService;
     }
 
-//    @Scheduled(cron = "0 0 10-18 * * MON-FRI")
-    @PostConstruct
+   @Scheduled(cron = "0 0 18 * * MON-FRI")
     public void reportCurrentTime() throws IOException, InterruptedException, CsvValidationException {
         log.info("Task started at {}", LocalDateTime.now());
         var realStateFundCSV = downloadService.dowload(InvestmentType.FII.getType());
