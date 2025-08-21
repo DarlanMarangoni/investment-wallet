@@ -2,8 +2,6 @@ POST http://localhost:8080/investments
 Content-Type: application/json
 
 {
-  "id": "a233a502-5a2e-4232-bd02-e1969942b58f",
-  "userId": "38fef184-e321-4ad0-a384-6068052bb107",
   "ticker": "XPML11",
   "investmentType": "STOCK",
   "amount": 10
