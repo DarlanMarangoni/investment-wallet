@@ -14,11 +14,9 @@ public class StockService implements VariableIncomeService<Stock> {
     private static final Logger LOGGER = LoggerFactory.getLogger(StockService.class);
 
     final StockRepository stockRepository;
-    final TransationService transationService;
 
-    public StockService(StockRepository stockRepository, TransationService transationService) {
+    public StockService(StockRepository stockRepository) {
         this.stockRepository = stockRepository;
-        this.transationService = transationService;
     }
 
     @Override

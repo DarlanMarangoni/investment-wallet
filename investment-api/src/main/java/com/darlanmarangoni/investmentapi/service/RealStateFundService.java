@@ -14,11 +14,9 @@ public class RealStateFundService implements VariableIncomeService<RealStateFund
     private static final Logger LOGGER = LoggerFactory.getLogger(RealStateFundService.class);
 
     final RealStateFundRepository realStateFundRepository;
-    final TransationService transationService;
 
-    public RealStateFundService(RealStateFundRepository realStateFundRepository, TransationService transationService) {
+    public RealStateFundService(RealStateFundRepository realStateFundRepository) {
         this.realStateFundRepository = realStateFundRepository;
-        this.transationService = transationService;
     }
 
 
