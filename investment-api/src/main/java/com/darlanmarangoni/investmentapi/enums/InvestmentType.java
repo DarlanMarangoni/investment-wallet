@@ -3,7 +3,8 @@ package com.darlanmarangoni.investmentapi.enums;
 public enum InvestmentType {
 
     STOCK("1", "Ações"),
-    FII("2", "Fundos imobiliarios");
+    FII("2", "Fundos imobiliarios"),
+    FIXED_INCOMING("3", "Renda fixa");
 
     private final String type;
     private final String description;

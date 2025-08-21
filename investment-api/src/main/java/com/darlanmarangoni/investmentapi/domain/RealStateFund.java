@@ -20,7 +20,6 @@ public class RealStateFund {
             sequenceName = "tb_real_state_fund_id_seq",
             allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tb_real_state_fund_id_seq")
-
     @Column(name = "id")
     private Long id;
     @Column(name = "ticker")
