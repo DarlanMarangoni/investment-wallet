@@ -30,6 +30,9 @@ public class InvestmentResource {
 
     @PostMapping
     public Investment save(@RequestBody InvestmentDto dto) {
+        var investments = investmentRepository.findByTickerAndUserId(dto.ticker(), USER_ID);
+        investments.forEach(investment -> investment.setActive(false));
+        investmentRepository.saveAll(investments);
         var entity = Investment.from(dto);
         entity.setUserId(USER_ID);
         return investmentRepository.save(entity);

@@ -9,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.beans.BeanUtils;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -22,10 +23,16 @@ public class Investment {
     private UUID id;
     @Column(name = "ticker")
     private String ticker;
+    @Column(name = "description")
+    private String description;
     @Column(name = "amount")
     private Integer amount;
+    @Column(name = "total")
+    private BigDecimal total;
     @Column(name = "user_id")
     private UUID userId;
+    @Column(name = "active")
+    private boolean active;
     @Column(name = "investment_type")
     @Enumerated(EnumType.STRING)
     private InvestmentType investmentType;
@@ -39,6 +46,7 @@ public class Investment {
     public static Investment from(InvestmentDto investmentDto) {
         Investment investment = new Investment();
         BeanUtils.copyProperties(investmentDto, investment);
+        investment.setActive(true);
         return investment;
     }
 }

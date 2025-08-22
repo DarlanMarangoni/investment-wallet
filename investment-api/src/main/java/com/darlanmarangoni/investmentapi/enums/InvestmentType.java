@@ -2,23 +2,15 @@ package com.darlanmarangoni.investmentapi.enums;
 
 public enum InvestmentType {
 
-    STOCK("1", "Ações"),
-    FII("2", "Fundos imobiliarios"),
-    FIXED_INCOMING("3", "Renda fixa");
+    STOCK("Ações"),
+    FII("Fundos imobiliarios"),
+    FIXED_INCOMING("Renda fixa"),
+    PRIVATE_PENSION("Previdencia privada"),
+    FGTS("Fundo de garantia por tempo de servico");
 
-    private final String type;
     private final String description;
 
-    InvestmentType(String type, String description) {
-        this.type = type;
+    InvestmentType(String description) {
         this.description = description;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public String getDescription() {
-        return description;
     }
 }
